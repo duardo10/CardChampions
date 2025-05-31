@@ -1,8 +1,9 @@
 'use client';
 
-import { Card, Player } from '@/types';
+import { Card } from '@/types';
 import { rarityColors, formatPosition } from '@/lib/gameUtils';
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface PlayerCardProps {
   card: Card;
@@ -65,12 +66,14 @@ export default function PlayerCard({
       
       {/* Imagem do jogador */}
       <div className="relative h-3/5 overflow-hidden">
-        {!imageError ? (
-          <img
+        {!imageError && player.image ? (
+          <Image
             src={player.image}
             alt={player.name}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
             onError={() => setImageError(true)}
+            sizes="(max-width: 768px) 128px, (max-width: 1200px) 160px, 192px"
           />
         ) : (
           <div className="w-full h-full bg-gray-300 flex items-center justify-center">

@@ -37,13 +37,63 @@ export const getRandomRarity = (guaranteedRarity?: Player['rarity']): Player['ra
 // Função para obter jogador aleatório baseado na raridade
 export const getRandomPlayerByRarity = (rarity: Player['rarity']): Player => {
   const playersOfRarity = getPlayersByRarity(rarity);
+  
   if (playersOfRarity.length === 0) {
-    // Fallback para common se não encontrar jogadores da raridade
-    const commonPlayers = getPlayersByRarity('common');
-    return commonPlayers[Math.floor(Math.random() * commonPlayers.length)];
+    // Se não há jogadores dessa raridade, pegar qualquer jogador e ajustar a raridade
+    const allPlayers = getAllPlayers();
+    if (allPlayers.length === 0) {
+      // Fallback player se não houver nenhum
+      return {
+        id: 'unknown',
+        name: 'Jogador Desconhecido',
+        position: 'FWD',
+        team: 'Unknown',
+        country: 'Unknown',
+        rating: 60,
+        rarity: rarity,
+        image: '',
+        stats: { pace: 60, shooting: 60, passing: 60, defending: 60, dribbling: 60, physical: 60 }
+      };
+    }
+    
+    // Seleciona um jogador aleatório e ajusta sua raridade
+    const randomPlayer = allPlayers[Math.floor(Math.random() * allPlayers.length)];
+    return {
+      ...randomPlayer,
+      rarity: rarity, // Override the rarity
+      id: `${randomPlayer.id}-${rarity}` // Make unique ID
+    };
   }
   
   return playersOfRarity[Math.floor(Math.random() * playersOfRarity.length)];
+};
+
+// Função para gerar cartas comuns baseadas nos jogadores existentes
+export const generateCommonVariants = (): Player[] => {
+  const allPlayers = getAllPlayers();
+  const commonVariants: Player[] = [];
+  
+  // Criar versões "common" de jogadores existentes com ratings menores
+  allPlayers.forEach(player => {
+    if (player.rarity !== 'common') {
+      commonVariants.push({
+        ...player,
+        id: `${player.id}-common`,
+        rarity: 'common',
+        rating: Math.max(60, player.rating - 15), // Reduz o rating para versão comum
+        stats: {
+          pace: Math.max(40, player.stats.pace - 10),
+          shooting: Math.max(40, player.stats.shooting - 10),
+          passing: Math.max(40, player.stats.passing - 10),
+          defending: Math.max(40, player.stats.defending - 10),
+          dribbling: Math.max(40, player.stats.dribbling - 10),
+          physical: Math.max(40, player.stats.physical - 10),
+        }
+      });
+    }
+  });
+  
+  return commonVariants;
 };
 
 // Função para gerar uma carta única

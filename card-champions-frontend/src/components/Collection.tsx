@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Card, Player } from '@/types';
+import { Card } from '@/types';
 import { teams } from '@/data/teams';
 import { filterCardsByTeam, sortCardsByValue, calculateCollectionPercentage } from '@/lib/gameUtils';
 import PlayerCard from './PlayerCard';
@@ -187,7 +187,7 @@ export default function Collection({ cards, onCardClick }: CollectionProps) {
             <label className="block text-sm font-medium text-gray-700 mb-2">Ordenar Por</label>
             <select
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
+              onChange={(e) => setSortBy(e.target.value as 'rarity' | 'rating' | 'name' | 'recent')}
               className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="rarity">Raridade</option>

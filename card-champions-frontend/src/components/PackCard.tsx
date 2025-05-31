@@ -3,6 +3,7 @@
 import { Pack } from '@/types';
 import { rarityColors } from '@/lib/gameUtils';
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface PackCardProps {
   pack: Pack;
@@ -31,11 +32,13 @@ export default function PackCard({ pack, onPurchase, disabled = false, userBalan
       {/* Pack Image */}
       <div className="relative h-48 overflow-hidden">
         {!imageError ? (
-          <img
+          <Image
             src={pack.image}
             alt={pack.name}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
             onError={() => setImageError(true)}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           />
         ) : (
           <div 
