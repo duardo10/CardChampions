@@ -20,6 +20,14 @@ export default function TeamAlbum({ cards, onCardClick }: TeamAlbumProps) {
   
   // Seleções da Copa do Mundo 2026 organizadas por região
   const worldCupTeams = {
+    favorites: [
+      { id: 'brazil', name: 'Brasil', flag: '🇧🇷', formation: '4-2-3-1' },
+      { id: 'argentina', name: 'Argentina', flag: '🇦🇷', formation: '4-3-3' },
+      { id: 'france', name: 'França', flag: '🇫🇷', formation: '4-2-3-1' },
+      { id: 'england', name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', formation: '4-2-3-1' },
+      { id: 'spain', name: 'Espanha', flag: '🇪🇸', formation: '4-3-3' },
+      { id: 'germany', name: 'Alemanha', flag: '🇩🇪', formation: '4-2-3-1' },
+    ],
     americas: [
       { id: 'brazil', name: 'Brasil', flag: '🇧🇷', formation: '4-2-3-1' },
       { id: 'argentina', name: 'Argentina', flag: '🇦🇷', formation: '4-3-3' },
