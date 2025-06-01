@@ -11,9 +11,41 @@ import PackCard from '@/components/PackCard';
 import PackOpening from '@/components/PackOpening';
 import Collection from '@/components/Collection';
 import PlayerCard from '@/components/PlayerCard';
+import TeamAlbum from '@/components/TeamAlbum';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('home');
+  
+  // Criar algumas cartas de exemplo para demonstração
+  const createExampleCards = (): Card[] => {
+    const allPlayers = getAllPlayers();
+    const exampleCards: Card[] = [];
+    
+    // Pegar alguns jogadores específicos para demonstração
+    const selectedPlayerIds = [
+      'alisson', 'marquinhos', 'neymar', 'vinicius', // Brasil
+      'messi', 'dimaria', 'martinez', // Argentina  
+      'mbappe', 'griezmann', 'lloris', // França
+      'kane', 'bellingham', 'saka', // Inglaterra
+      'pedri', 'gavi' // Espanha
+    ];
+    
+    selectedPlayerIds.forEach((playerId, index) => {
+      const player = allPlayers.find(p => p.id === playerId);
+      if (player) {
+        exampleCards.push({
+          id: `card-${playerId}-${Date.now()}-${index}`,
+          player,
+          serialNumber: Math.floor(Math.random() * 10000) + 1,
+          isUnique: Math.random() > 0.8, // 20% chance de ser única
+          dateObtained: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000) // Últimos 30 dias
+        });
+      }
+    });
+    
+    return exampleCards;
+  };
+  
   const [user, setUser] = useState<User>({
     id: '1',
     username: 'Colecionador',
@@ -21,7 +53,7 @@ export default function Home() {
     balance: 100,
     collection: {
       userId: '1',
-      cards: [],
+      cards: createExampleCards(), // Começar com cartas de exemplo
       completionPercentage: 0,
       totalCards: 0,
       uniqueCards: 0
@@ -94,6 +126,12 @@ export default function Home() {
               Comprar Pacotes
             </button>
             <button 
+              onClick={() => setActiveTab('album')}
+              className="bg-yellow-500 text-white px-8 py-3 rounded-xl font-bold text-lg hover:bg-yellow-600 transition-all duration-200 transform hover:scale-105 shadow-lg"
+            >
+              📖 Visualizar Álbum
+            </button>
+            <button 
               onClick={() => setActiveTab('collection')}
               className="bg-blue-500 bg-opacity-30 text-white px-8 py-3 rounded-xl font-bold text-lg hover:bg-opacity-40 transition-all duration-200 border-2 border-white border-opacity-30"
             >
@@ -141,6 +179,33 @@ export default function Home() {
           </div>
         </div>
       )}
+      
+      {/* Novo destaque para o álbum */}
+      <div className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 rounded-2xl p-8 text-white shadow-xl">
+        <div className="text-center">
+          <div className="text-6xl mb-4">📖</div>
+          <h3 className="text-3xl font-bold mb-4">
+            Novo: Álbum Interativo da Copa do Mundo!
+          </h3>
+          <p className="text-xl mb-6 opacity-90 max-w-2xl mx-auto">
+            Organize suas cartas por seleções em um layout visual incrível! 
+            Veja seus jogadores organizados por posição, como em um verdadeiro álbum da Copa.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => setActiveTab('album')}
+              className="bg-white text-yellow-600 px-8 py-3 rounded-xl font-bold text-lg hover:bg-yellow-50 transition-all duration-200 transform hover:scale-105"
+            >
+              Explorar Álbum
+            </button>
+            <div className="flex items-center justify-center space-x-2 text-yellow-100">
+              <span>✨</span>
+              <span className="text-sm">Visualização por time • Layout de campo • {user.collection.totalCards} cartas</span>
+              <span>✨</span>
+            </div>
+          </div>
+        </div>
+      </div>
       
       {/* Call to action */}
       <div className="bg-gradient-to-r from-green-500 to-blue-600 rounded-2xl p-8 text-white text-center">
@@ -206,7 +271,7 @@ export default function Home() {
             </div>
             
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-              {team.players.map((player) => {
+              {team.players.slice(0, 5).map((player) => {
                 // Criar uma carta temporária para display
                 const tempCard: Card = {
                   id: `temp-${player.id}`,
@@ -226,10 +291,41 @@ export default function Home() {
                 );
               })}
             </div>
+            
+            <div className="mt-4 text-center">
+              <button
+                onClick={() => setActiveTab('album')}
+                className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              >
+                Ver todos os {team.players.length} jogadores →
+              </button>
+            </div>
           </div>
         ))}
       </div>
+      
+      <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 text-white text-center">
+        <h3 className="text-2xl font-bold mb-3">
+          🏆 Álbum Interativo Disponível!
+        </h3>
+        <p className="text-lg mb-4 opacity-90">
+          Visualize sua coleção de forma organizada por seleções, como um verdadeiro álbum da Copa do Mundo!
+        </p>
+        <button
+          onClick={() => setActiveTab('album')}
+          className="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition-all duration-200"
+        >
+          Abrir Álbum
+        </button>
+      </div>
     </div>
+  );
+  
+  const renderAlbum = () => (
+    <TeamAlbum 
+      cards={user.collection.cards}
+      onCardClick={setSelectedCard}
+    />
   );
   
   const renderLeaderboard = () => (
@@ -275,6 +371,7 @@ export default function Home() {
           />
         )}
         {activeTab === 'teams' && renderTeams()}
+        {activeTab === 'album' && renderAlbum()}
         {activeTab === 'leaderboard' && renderLeaderboard()}
       </main>
       

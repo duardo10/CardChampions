@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --foreground-rgb: 255, 255, 255;
+      --background-start-rgb: 0, 0, 0;
+      --background-end-rgb: 0, 0, 0;
+    }
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Custom classes for dynamic colors used in TeamAlbum */
+@layer utilities {
+  /* Position filter buttons */
+  .bg-gray-500 { @apply bg-gray-500; }
+  .bg-green-500 { @apply bg-green-500; }
+  .bg-blue-500 { @apply bg-blue-500; }
+  .bg-yellow-500 { @apply bg-yellow-500; }
+  .bg-red-500 { @apply bg-red-500; }
+  
+  .bg-gray-100 { @apply bg-gray-100; }
+  .bg-green-100 { @apply bg-green-100; }
+  .bg-blue-100 { @apply bg-blue-100; }
+  .bg-yellow-100 { @apply bg-yellow-100; }
+  .bg-red-100 { @apply bg-red-100; }
+  
+  .bg-gray-200 { @apply bg-gray-200; }
+  .bg-green-200 { @apply bg-green-200; }
+  .bg-blue-200 { @apply bg-blue-200; }
+  .bg-yellow-200 { @apply bg-yellow-200; }
+  .bg-red-200 { @apply bg-red-200; }
+  
+  .text-gray-700 { @apply text-gray-700; }
+  .text-green-700 { @apply text-green-700; }
+  .text-blue-700 { @apply text-blue-700; }
+  .text-yellow-700 { @apply text-yellow-700; }
+  .text-red-700 { @apply text-red-700; }
+  
+  /* Enhanced field styling */
+  .field-pattern {
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1) 0px,
+        rgba(255, 255, 255, 0.1) 2px,
+        transparent 2px,
+        transparent 10px
+      );
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Animated progress bars */
+  .progress-bar {
+    background: linear-gradient(90deg, 
+      #3b82f6 0%, 
+      #8b5cf6 25%, 
+      #6366f1 50%, 
+      #8b5cf6 75%, 
+      #3b82f6 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  /* Formation layout enhancements */
+  .formation-grid {
+    display: grid;
+    gap: 1.5rem;
+    place-items: center;
+  }
+  
+  .position-badge {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
 }

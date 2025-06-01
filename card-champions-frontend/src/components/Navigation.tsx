@@ -17,6 +17,7 @@ export default function Navigation({ activeTab, onTabChange, userBalance, userNa
     { id: 'packs', label: 'Pacotes', icon: '📦' },
     { id: 'collection', label: 'Coleção', icon: '🃏' },
     { id: 'teams', label: 'Times', icon: '⚽' },
+    { id: 'album', label: 'Álbum', icon: '📖' },
     { id: 'leaderboard', label: 'Ranking', icon: '🏆' },
   ];
   
