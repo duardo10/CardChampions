@@ -3316,6 +3316,542 @@ export const teams: Team[] = [
         stats: { pace: 78, shooting: 75, passing: 72, defending: 45, dribbling: 76, physical: 74 }
       }
     ]
+  },
+  {
+    id: 'ghana',
+    name: 'Gana',
+    country: 'Ghana',
+    flag: '🇬🇭',
+    formation: '4-2-3-1',
+    players: [
+      // Goleiro
+      {
+        id: 'ati_zigi',
+        name: 'Lawrence Ati-Zigi',
+        position: 'GK',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 79,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 50, shooting: 20, passing: 76, defending: 40, dribbling: 55, physical: 82 }
+      },
+      {
+        id: 'wollacott',
+        name: 'Jojo Wollacott',
+        position: 'GK',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 76,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 48, shooting: 18, passing: 74, defending: 38, dribbling: 52, physical: 80 }
+      },
+      // Defensores (4)
+      {
+        id: 'djiku',
+        name: 'Alexander Djiku',
+        position: 'DEF',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 80,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 72, shooting: 42, passing: 76, defending: 84, dribbling: 68, physical: 85 }
+      },
+      {
+        id: 'amartey',
+        name: 'Daniel Amartey',
+        position: 'DEF',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 78,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 70, shooting: 40, passing: 74, defending: 82, dribbling: 65, physical: 88 }
+      },
+      {
+        id: 'baba_rahman',
+        name: 'Baba Rahman',
+        position: 'DEF',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 78,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 78, shooting: 50, passing: 76, defending: 78, dribbling: 72, physical: 76 }
+      },
+      {
+        id: 'odoi',
+        name: 'Denis Odoi',
+        position: 'DEF',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 77,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 75, shooting: 48, passing: 74, defending: 80, dribbling: 68, physical: 78 }
+      },
+      // Meio-campistas (3)
+      {
+        id: 'partey',
+        name: 'Thomas Partey',
+        position: 'MID',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 83,
+        rarity: 'epic',
+        image: '',
+        stats: { pace: 75, shooting: 70, passing: 84, defending: 86, dribbling: 78, physical: 85 }
+      },
+      {
+        id: 'kudus',
+        name: 'Mohammed Kudus',
+        position: 'MID',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 82,
+        rarity: 'epic',
+        image: '',
+        stats: { pace: 80, shooting: 78, passing: 82, defending: 65, dribbling: 88, physical: 72 }
+      },
+      {
+        id: 'ayew_andre',
+        name: 'André Ayew',
+        position: 'MID',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 79,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 75, shooting: 75, passing: 78, defending: 68, dribbling: 80, physical: 78 }
+      },
+      // Atacantes (2)
+      {
+        id: 'williams',
+        name: 'Iñaki Williams',
+        position: 'FWD',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 82,
+        rarity: 'epic',
+        image: '',
+        stats: { pace: 92, shooting: 78, passing: 72, defending: 40, dribbling: 82, physical: 80 }
+      },
+      {
+        id: 'ayew_jordan',
+        name: 'Jordan Ayew',
+        position: 'FWD',
+        team: 'Gana',
+        country: 'Ghana',
+        rating: 79,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 80, shooting: 80, passing: 70, defending: 45, dribbling: 78, physical: 82 }
+      }
+    ]
+  },
+  {
+    id: 'nigeria',
+    name: 'Nigéria',
+    country: 'Nigeria',
+    flag: '🇳🇬',
+    formation: '4-2-3-1',
+    players: [
+      // Goleiro
+      {
+        id: 'uzoho',
+        name: 'Francis Uzoho',
+        position: 'GK',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 78,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 48, shooting: 18, passing: 74, defending: 38, dribbling: 52, physical: 82 }
+      },
+      {
+        id: 'okoye',
+        name: 'Maduka Okoye',
+        position: 'GK',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 76,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 50, shooting: 20, passing: 72, defending: 36, dribbling: 50, physical: 80 }
+      },
+      // Defensores (4)
+      {
+        id: 'ajayi',
+        name: 'Semi Ajayi',
+        position: 'DEF',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 79,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 70, shooting: 42, passing: 74, defending: 82, dribbling: 65, physical: 88 }
+      },
+      {
+        id: 'troost_ekong',
+        name: 'William Troost-Ekong',
+        position: 'DEF',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 80,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 72, shooting: 45, passing: 76, defending: 84, dribbling: 68, physical: 85 }
+      },
+      {
+        id: 'ola_aina',
+        name: 'Ola Aina',
+        position: 'DEF',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 79,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 82, shooting: 52, passing: 78, defending: 78, dribbling: 76, physical: 74 }
+      },
+      {
+        id: 'zaidu',
+        name: 'Zaidu Sanusi',
+        position: 'DEF',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 78,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 85, shooting: 50, passing: 74, defending: 76, dribbling: 74, physical: 76 }
+      },
+      // Meio-campistas (3)
+      {
+        id: 'ndidi',
+        name: 'Wilfred Ndidi',
+        position: 'MID',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 82,
+        rarity: 'epic',
+        image: '',
+        stats: { pace: 75, shooting: 65, passing: 80, defending: 88, dribbling: 76, physical: 88 }
+      },
+      {
+        id: 'aribo',
+        name: 'Joe Aribo',
+        position: 'MID',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 80,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 78, shooting: 72, passing: 82, defending: 74, dribbling: 82, physical: 78 }
+      },
+      {
+        id: 'chukwueze',
+        name: 'Samuel Chukwueze',
+        position: 'MID',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 82,
+        rarity: 'epic',
+        image: '',
+        stats: { pace: 90, shooting: 75, passing: 78, defending: 50, dribbling: 88, physical: 68 }
+      },
+      // Atacantes (2)
+      {
+        id: 'osimhen',
+        name: 'Victor Osimhen',
+        position: 'FWD',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 87,
+        rarity: 'legendary',
+        image: '',
+        stats: { pace: 90, shooting: 88, passing: 75, defending: 40, dribbling: 82, physical: 85 }
+      },
+      {
+        id: 'lookman',
+        name: 'Ademola Lookman',
+        position: 'FWD',
+        team: 'Nigéria',
+        country: 'Nigeria',
+        rating: 81,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 88, shooting: 80, passing: 76, defending: 45, dribbling: 85, physical: 70 }
+      }
+    ]
+  },
+  {
+    id: 'iran',
+    name: 'Irã',
+    country: 'Iran',
+    flag: '🇮🇷',
+    formation: '4-2-3-1',
+    players: [
+      // Goleiro
+      {
+        id: 'beiranvand',
+        name: 'Alireza Beiranvand',
+        position: 'GK',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 80,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 50, shooting: 20, passing: 76, defending: 40, dribbling: 55, physical: 85 }
+      },
+      {
+        id: 'hosseini',
+        name: 'Hossein Hosseini',
+        position: 'GK',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 77,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 48, shooting: 18, passing: 74, defending: 38, dribbling: 52, physical: 82 }
+      },
+      // Defensores (4)
+      {
+        id: 'pouraliganji',
+        name: 'Morteza Pouraliganji',
+        position: 'DEF',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 79,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 68, shooting: 40, passing: 74, defending: 84, dribbling: 65, physical: 88 }
+      },
+      {
+        id: 'cheshmi',
+        name: 'Roozbeh Cheshmi',
+        position: 'DEF',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 78,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 70, shooting: 42, passing: 76, defending: 82, dribbling: 68, physical: 85 }
+      },
+      {
+        id: 'mohammadi',
+        name: 'Milad Mohammadi',
+        position: 'DEF',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 78,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 78, shooting: 50, passing: 76, defending: 78, dribbling: 72, physical: 76 }
+      },
+      {
+        id: 'rezaeian',
+        name: 'Sadegh Moharrami',
+        position: 'DEF',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 77,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 76, shooting: 48, passing: 74, defending: 80, dribbling: 70, physical: 78 }
+      },
+      // Meio-campistas (3)
+      {
+        id: 'ezatolahi',
+        name: 'Saeid Ezatolahi',
+        position: 'MID',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 79,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 70, shooting: 65, passing: 82, defending: 84, dribbling: 74, physical: 82 }
+      },
+      {
+        id: 'karimi',
+        name: 'Ahmad Nourollahi',
+        position: 'MID',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 78,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 72, shooting: 68, passing: 80, defending: 78, dribbling: 76, physical: 78 }
+      },
+      {
+        id: 'ghoddos',
+        name: 'Saman Ghoddos',
+        position: 'MID',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 80,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 75, shooting: 75, passing: 82, defending: 65, dribbling: 82, physical: 72 }
+      },
+      // Atacantes (2)
+      {
+        id: 'taremi',
+        name: 'Mehdi Taremi',
+        position: 'FWD',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 84,
+        rarity: 'epic',
+        image: '',
+        stats: { pace: 80, shooting: 86, passing: 78, defending: 50, dribbling: 82, physical: 85 }
+      },
+      {
+        id: 'azmoun',
+        name: 'Sardar Azmoun',
+        position: 'FWD',
+        team: 'Irã',
+        country: 'Iran',
+        rating: 82,
+        rarity: 'epic',
+        image: '',
+        stats: { pace: 82, shooting: 84, passing: 74, defending: 45, dribbling: 78, physical: 82 }
+      }
+    ]
+  },
+  {
+    id: 'qatar',
+    name: 'Catar',
+    country: 'Qatar',
+    flag: '🇶🇦',
+    formation: '4-2-3-1',
+    players: [
+      // Goleiro
+      {
+        id: 'barsham',
+        name: 'Saad Al-Sheeb',
+        position: 'GK',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 77,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 48, shooting: 18, passing: 72, defending: 38, dribbling: 50, physical: 80 }
+      },
+      {
+        id: 'al_sheeb',
+        name: 'Meshaal Barsham',
+        position: 'GK',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 75,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 46, shooting: 16, passing: 70, defending: 36, dribbling: 48, physical: 78 }
+      },
+      // Defensores (4)
+      {
+        id: 'hassan',
+        name: 'Bassam Al-Rawi',
+        position: 'DEF',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 76,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 68, shooting: 38, passing: 72, defending: 80, dribbling: 62, physical: 82 }
+      },
+      {
+        id: 'salman',
+        name: 'Tarek Salman',
+        position: 'DEF',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 75,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 70, shooting: 40, passing: 74, defending: 78, dribbling: 65, physical: 80 }
+      },
+      {
+        id: 'ahmed',
+        name: 'Abdulkarim Hassan',
+        position: 'DEF',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 76,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 75, shooting: 48, passing: 74, defending: 76, dribbling: 70, physical: 74 }
+      },
+      {
+        id: 'pedro',
+        name: 'Pedro Miguel',
+        position: 'DEF',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 75,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 72, shooting: 45, passing: 72, defending: 78, dribbling: 68, physical: 76 }
+      },
+      // Meio-campistas (3)
+      {
+        id: 'al_haydos',
+        name: 'Hassan Al-Haydos',
+        position: 'MID',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 79,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 72, shooting: 75, passing: 82, defending: 68, dribbling: 80, physical: 72 }
+      },
+      {
+        id: 'boudiaf',
+        name: 'Karim Boudiaf',
+        position: 'MID',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 77,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 68, shooting: 65, passing: 78, defending: 80, dribbling: 72, physical: 78 }
+      },
+      {
+        id: 'madibo',
+        name: 'Mostafa Madibo',
+        position: 'MID',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 76,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 70, shooting: 68, passing: 76, defending: 74, dribbling: 74, physical: 76 }
+      },
+      // Atacantes (2)
+      {
+        id: 'afif',
+        name: 'Akram Afif',
+        position: 'FWD',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 81,
+        rarity: 'epic',
+        image: '',
+        stats: { pace: 85, shooting: 78, passing: 80, defending: 50, dribbling: 88, physical: 68 }
+      },
+      {
+        id: 'ali',
+        name: 'Almoez Ali',
+        position: 'FWD',
+        team: 'Catar',
+        country: 'Qatar',
+        rating: 78,
+        rarity: 'rare',
+        image: '',
+        stats: { pace: 78, shooting: 80, passing: 70, defending: 40, dribbling: 76, physical: 78 }
+      }
+    ]
   }
 ];
 

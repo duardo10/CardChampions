@@ -56,10 +56,7 @@ export default function TeamAlbum({ cards, onCardClick }: TeamAlbumProps) {
       { id: 'morocco', name: 'Marrocos', flag: '🇲🇦', formation: '4-2-3-1' },
       { id: 'senegal', name: 'Senegal', flag: '🇸🇳', formation: '4-2-3-1' },
       { id: 'ghana', name: 'Gana', flag: '🇬🇭', formation: '4-2-3-1' },
-      { id: 'cameroon', name: 'Camarões', flag: '🇨🇲', formation: '4-2-3-1' },
       { id: 'nigeria', name: 'Nigéria', flag: '🇳🇬', formation: '4-2-3-1' },
-      { id: 'tunisia', name: 'Tunísia', flag: '🇹🇳', formation: '4-2-3-1' },
-      { id: 'south_africa', name: 'África do Sul', flag: '🇿🇦', formation: '4-2-3-1' }
     ],
     asia: [
       { id: 'japan', name: 'Japão', flag: '🇯🇵', formation: '4-2-3-1' },

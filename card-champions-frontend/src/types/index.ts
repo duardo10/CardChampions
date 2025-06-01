@@ -37,11 +37,14 @@ export interface Collection {
 export interface Pack {
   id: string;
   name: string;
+  description: string;
   price: number;
   cardCount: number;
-  guaranteedRarity?: 'rare' | 'epic' | 'legendary';
-  description: string;
+  guaranteedRarity?: Rarity;
+  rarity: 'basic' | 'premium' | 'elite' | 'ultimate';
   image: string;
+  isLimited?: boolean;
+  theme?: string;
 }
 
 export interface User {
@@ -94,4 +97,54 @@ export interface GameStats {
   totalCards: number;
   totalPlayers: number;
   activeTrades: number;
+}
+
+export interface GameSession {
+  id: string;
+  userId: string;
+  packsOpened: number;
+  cardsCollected: number;
+  rarityCount: {
+    common: number;
+    rare: number;
+    epic: number;
+    legendary: number;
+  };
+  achievements: Achievement[];
+  lastLogin: Date;
+  streak: number;
+}
+
+export interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  progress: number;
+  maxProgress: number;
+  reward: {
+    type: 'coins' | 'pack' | 'card' | 'title';
+    amount?: number;
+    item?: string;
+  };
+  unlocked: boolean;
+  dateUnlocked?: Date;
+}
+
+export interface SpecialCard extends Omit<Card, 'rarity'> {
+  rarity: 'special' | 'iconic' | 'legendary';
+  edition: 'first_day' | 'world_cup' | 'golden_boot' | 'motm' | 'toty';
+  serialNumber: number;
+  maxSupply: number;
+  stats: PlayerStats & {
+    boosted?: boolean;
+    boostPercentage?: number;
+  };
+}
+
+export interface PackOpening {
+  packId: string;
+  cards: (Card | SpecialCard)[];
+  openedAt: Date;
+  userId: string;
 } 

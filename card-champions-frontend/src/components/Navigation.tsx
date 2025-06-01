@@ -14,10 +14,11 @@ export default function Navigation({ activeTab, onTabChange, userBalance, userNa
   
   const tabs = [
     { id: 'home', label: 'Início', icon: '🏠' },
-    { id: 'packs', label: 'Pacotes', icon: '📦' },
     { id: 'collection', label: 'Coleção', icon: '🃏' },
-    { id: 'teams', label: 'Times', icon: '⚽' },
     { id: 'album', label: 'Álbum', icon: '📖' },
+    { id: 'store', label: 'Loja', icon: '🛍️' },
+    { id: 'achievements', label: 'Conquistas', icon: '🏆' },
+    { id: 'teams', label: 'Times', icon: '⚽' },
     { id: 'leaderboard', label: 'Ranking', icon: '🏆' },
   ];
   
