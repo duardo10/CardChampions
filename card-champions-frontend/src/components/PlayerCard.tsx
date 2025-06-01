@@ -54,17 +54,17 @@ export default function PlayerCard({
           />
         )}
         
-        {/* Header com rating e posição */}
+        {/* Header com rating e posição - Melhor contraste */}
         <div className="absolute top-2 left-2 right-2 flex justify-between items-center z-10">
           <div 
-            className={`bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs font-bold ${
+            className={`bg-black/80 text-white px-2 py-1 rounded text-xs font-bold border border-white/20 shadow-lg ${
               isPlaceholder ? 'opacity-50' : ''
             }`}
           >
             {player.rating}
           </div>
           <div 
-            className="text-xs font-semibold px-2 py-1 rounded"
+            className="text-xs font-bold px-2 py-1 rounded border border-white/30 shadow-lg"
             style={{ 
               backgroundColor: isPlaceholder ? '#9ca3af' : rarityColor,
               color: 'white',
@@ -94,35 +94,39 @@ export default function PlayerCard({
             </div>
           )}
           
-          {/* Gradiente sobre a imagem */}
-          <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black via-black/50 to-transparent" />
+          {/* Gradiente mais forte para melhor contraste */}
+          <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
         </div>
         
-        {/* Informações do jogador */}
-        <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
-          <h3 className={`font-bold text-sm leading-tight mb-1 truncate ${isPlaceholder ? 'opacity-60' : ''}`}>
+        {/* Informações do jogador - Fundo escuro garantido */}
+        <div className="absolute bottom-0 left-0 right-0 bg-black/75 backdrop-blur-sm p-3">
+          <h3 className={`font-bold text-sm leading-tight mb-1 truncate text-white ${
+            isPlaceholder ? 'opacity-60' : 'drop-shadow-sm'
+          }`}>
             {isPlaceholder ? 'Jogador Bloqueado' : player.name}
           </h3>
-          <div className={`flex items-center justify-between text-xs ${isPlaceholder ? 'opacity-50' : ''}`}>
+          <div className={`flex items-center justify-between text-xs text-gray-200 ${
+            isPlaceholder ? 'opacity-50' : ''
+          }`}>
             <span className="truncate">{player.team}</span>
             <span>{player.country}</span>
           </div>
           
+          {/* Serial number integrado nas informações */}
+          {!isPlaceholder && (
+            <div className="text-xs text-gray-400 mt-1">
+              #{card.serialNumber}
+            </div>
+          )}
+          
           {card.isUnique && !isPlaceholder && (
             <div className="mt-1">
-              <span className="bg-yellow-500 text-black px-1 py-0.5 rounded text-xs font-bold">
+              <span className="bg-yellow-400 text-black px-2 py-0.5 rounded text-xs font-bold shadow-sm">
                 ÚNICO
               </span>
             </div>
           )}
         </div>
-        
-        {/* Serial number */}
-        {!isPlaceholder && (
-          <div className="absolute bottom-1 right-1 text-xs text-white opacity-60">
-            #{card.serialNumber}
-          </div>
-        )}
         
         {/* Indicador de raridade */}
         <div 
@@ -133,49 +137,49 @@ export default function PlayerCard({
           }}
         />
         
-        {/* Overlay de placeholder */}
+        {/* Overlay de placeholder - Melhor contraste */}
         {isPlaceholder && (
-          <div className="absolute inset-0 bg-black/60 rounded-lg flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm rounded-lg flex items-center justify-center">
             <div className="text-white text-center">
               <div className="text-4xl mb-2">🔒</div>
-              <div className="text-sm font-medium">Não Coletado</div>
-              <div className="text-xs opacity-75 mt-1">{player.name}</div>
+              <div className="text-sm font-bold drop-shadow-lg">Não Coletado</div>
+              <div className="text-xs opacity-90 mt-1 bg-black/50 px-2 py-1 rounded">{player.name}</div>
             </div>
           </div>
         )}
         
         {/* Estatísticas detalhadas (apenas quando showDetails = true) */}
         {showDetails && size === 'large' && !isPlaceholder && (
-          <div className="absolute inset-0 bg-black bg-opacity-90 flex flex-col justify-center p-4 opacity-0 hover:opacity-100 transition-opacity duration-300">
-            <h4 className="text-white font-bold mb-2 text-center">{player.name}</h4>
-            <div className="space-y-1 text-xs text-white">
-              <div className="flex justify-between">
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-sm flex flex-col justify-center p-4 opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <h4 className="text-white font-bold mb-3 text-center drop-shadow-lg">{player.name}</h4>
+            <div className="space-y-2 text-sm text-white">
+              <div className="flex justify-between bg-white/10 rounded px-2 py-1">
                 <span>Velocidade:</span>
-                <span>{player.stats.pace}</span>
+                <span className="font-bold">{player.stats.pace}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between bg-white/10 rounded px-2 py-1">
                 <span>Finalização:</span>
-                <span>{player.stats.shooting}</span>
+                <span className="font-bold">{player.stats.shooting}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between bg-white/10 rounded px-2 py-1">
                 <span>Passe:</span>
-                <span>{player.stats.passing}</span>
+                <span className="font-bold">{player.stats.passing}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between bg-white/10 rounded px-2 py-1">
                 <span>Defesa:</span>
-                <span>{player.stats.defending}</span>
+                <span className="font-bold">{player.stats.defending}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between bg-white/10 rounded px-2 py-1">
                 <span>Drible:</span>
-                <span>{player.stats.dribbling}</span>
+                <span className="font-bold">{player.stats.dribbling}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between bg-white/10 rounded px-2 py-1">
                 <span>Físico:</span>
-                <span>{player.stats.physical}</span>
+                <span className="font-bold">{player.stats.physical}</span>
               </div>
             </div>
-            <div className="mt-2 text-center">
-              <span className="text-yellow-400 text-xs">
+            <div className="mt-3 text-center">
+              <span className="text-yellow-400 text-sm font-bold bg-black/50 px-3 py-1 rounded">
                 {formatPosition(player.position)}
               </span>
             </div>
