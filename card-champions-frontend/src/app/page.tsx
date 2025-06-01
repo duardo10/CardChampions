@@ -15,9 +15,11 @@ import TeamAlbum from '@/components/TeamAlbum';
 import Leaderboard from '@/components/Leaderboard';
 import PackStore from '@/components/PackStore';
 import Achievements from '@/components/Achievements';
+import HomePage from '@/components/Home';
+import Teams from '@/components/Teams';
 
-export default function Home() {
-  const [activeTab, setActiveTab] = useState('collection');
+export default function MainApp() {
+  const [activeTab, setActiveTab] = useState('home');
   const [collection, setCollection] = useState<Card[]>([]);
   const [userCoins, setUserCoins] = useState(1000);
   
@@ -85,6 +87,8 @@ export default function Home() {
         completionPercentage
       }
     }));
+    
+    setCollection(user.collection.cards);
   }, [user.collection.cards]);
   
   const handlePurchasePack = (pack: Pack) => {
@@ -116,6 +120,15 @@ export default function Home() {
   
   const renderContent = () => {
     switch (activeTab) {
+      case 'home':
+        return (
+          <HomePage 
+            userBalance={user.balance}
+            collectionCount={user.collection.totalCards}
+            onNavigateToStore={() => setActiveTab('store')}
+            onNavigateToCollection={() => setActiveTab('collection')}
+          />
+        );
       case 'collection':
         return <Collection cards={collection} />;
       case 'album':
@@ -133,11 +146,18 @@ export default function Home() {
       case 'achievements':
         return <Achievements />;
       case 'teams':
-        return <div className="p-8 text-center text-white">Times em desenvolvimento...</div>;
+        return <Teams userCards={collection} onTeamSelect={(teamId) => console.log('Selected team:', teamId)} />;
       case 'leaderboard':
         return <Leaderboard />;
       default:
-        return <Collection cards={collection} />;
+        return (
+          <HomePage 
+            userBalance={user.balance}
+            collectionCount={user.collection.totalCards}
+            onNavigateToStore={() => setActiveTab('store')}
+            onNavigateToCollection={() => setActiveTab('collection')}
+          />
+        );
     }
   };
   
