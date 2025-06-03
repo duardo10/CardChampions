@@ -8,6 +8,7 @@ interface HomeProps {
   collectionCount: number;
   onNavigateToStore: () => void;
   onNavigateToCollection: () => void;
+  onNavigateToTeams: () => void;
 }
 
 // Mapeamento de países para códigos ISO corretos para a API de bandeiras
@@ -47,7 +48,7 @@ const getCountryCode = (country: string): string => {
   return countryMap[country] || country.substring(0, 2).toUpperCase();
 };
 
-export default function Home({ userBalance, collectionCount, onNavigateToStore, onNavigateToCollection }: HomeProps) {
+export default function Home({ userBalance, collectionCount, onNavigateToStore, onNavigateToCollection, onNavigateToTeams }: HomeProps) {
   const totalPlayers = teams.reduce((acc, team) => acc + team.players.length, 0);
   const completionPercentage = Math.round((collectionCount / totalPlayers) * 100);
 
@@ -66,7 +67,7 @@ export default function Home({ userBalance, collectionCount, onNavigateToStore, 
             </h2>
             <p className="text-xl md:text-2xl mb-12 text-gray-300 max-w-3xl mx-auto">
               Colecione as cartas dos maiores craques do futebol mundial. 
-              22 seleções, 242+ jogadores únicos te esperam!
+              {teams.length} seleções, {totalPlayers}+ jogadores únicos te esperam!
             </p>
             
             {/* Quick Stats Cards */}
@@ -198,7 +199,10 @@ export default function Home({ userBalance, collectionCount, onNavigateToStore, 
             <p className="text-gray-300 mb-4">
               Explore todas as {teams.length} seleções disponíveis
             </p>
-            <button className="px-6 py-2 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-white border border-slate-500">
+            <button 
+              onClick={onNavigateToTeams}
+              className="px-6 py-2 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg text-white border border-slate-500"
+            >
               Ver Todas as Seleções →
             </button>
           </div>

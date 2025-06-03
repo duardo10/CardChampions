@@ -127,6 +127,7 @@ export default function MainApp() {
             collectionCount={user.collection.totalCards}
             onNavigateToStore={() => setActiveTab('store')}
             onNavigateToCollection={() => setActiveTab('collection')}
+            onNavigateToTeams={() => setActiveTab('teams')}
           />
         );
       case 'collection':
@@ -156,6 +157,7 @@ export default function MainApp() {
             collectionCount={user.collection.totalCards}
             onNavigateToStore={() => setActiveTab('store')}
             onNavigateToCollection={() => setActiveTab('collection')}
+            onNavigateToTeams={() => setActiveTab('teams')}
           />
         );
     }
