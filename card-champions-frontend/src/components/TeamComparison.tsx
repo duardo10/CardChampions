@@ -63,7 +63,7 @@ export default function TeamComparison({ cards, onClose }: TeamComparisonProps) 
     };
   };
   
-  const teamStats = selectedTeams.map(teamId => getTeamStats(teamId)).filter(Boolean);
+  const teamStats = selectedTeams.map(teamId => getTeamStats(teamId)).filter((stats): stats is NonNullable<typeof stats> => stats !== null);
   
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">

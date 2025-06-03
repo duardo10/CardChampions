@@ -9,6 +9,43 @@ interface TeamsProps {
   onTeamSelect?: (teamId: string) => void;
 }
 
+// Mapeamento de países para códigos ISO corretos para a API de bandeiras
+const getCountryCode = (country: string): string => {
+  const countryMap: { [key: string]: string } = {
+    'Brazil': 'BR',
+    'Argentina': 'AR', 
+    'France': 'FR',
+    'Germany': 'DE',
+    'Spain': 'ES',
+    'England': 'GB',
+    'Portugal': 'PT',
+    'Netherlands': 'NL',
+    'Italy': 'IT',
+    'Belgium': 'BE',
+    'Croatia': 'HR',
+    'Morocco': 'MA',
+    'Japan': 'JP',
+    'Mexico': 'MX',
+    'United States': 'US',
+    'Canada': 'CA',
+    'Uruguay': 'UY',
+    'Colombia': 'CO',
+    'Chile': 'CL',
+    'Ecuador': 'EC',
+    'Peru': 'PE',
+    'Poland': 'PL',
+    'Denmark': 'DK',
+    'Sweden': 'SE',
+    'Norway': 'NO',
+    'Switzerland': 'CH',
+    'Austria': 'AT',
+    'Czech Republic': 'CZ',
+    'Australia': 'AU'
+  };
+  
+  return countryMap[country] || country.substring(0, 2).toUpperCase();
+};
+
 export default function Teams({ userCards, onTeamSelect }: TeamsProps) {
   const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -64,7 +101,7 @@ export default function Teams({ userCards, onTeamSelect }: TeamsProps) {
             Seleções Nacionais
           </h1>
           <p className="text-xl text-gray-300 mb-6">
-            Copa do Mundo FIFA 2026™ - 22 Seleções Participantes
+            Copa do Mundo FIFA 2026™ - {teams.length} Seleções Participantes
           </p>
           
           {/* View Mode Toggle */}
@@ -116,7 +153,43 @@ export default function Teams({ userCards, onTeamSelect }: TeamsProps) {
                         }`}
                       >
                         <div className="text-center">
-                          <div className="text-6xl mb-4">{team.flag}</div>
+                          <div className="mb-4 flex justify-center">
+                            <div className="relative w-16 h-12 hover:scale-110 transition-all duration-300 filter drop-shadow-lg">
+                              <img
+                                src={`https://flagsapi.com/${getCountryCode(team.country).toUpperCase()}/flat/64.png`}
+                                alt={`Bandeira ${team.country}`}
+                                className="w-full h-full object-cover rounded-md shadow-lg border-2 border-white border-opacity-30"
+                                onLoad={(e) => {
+                                  const target = e.currentTarget as HTMLImageElement;
+                                  target.style.display = 'block';
+                                  const fallback = target.nextElementSibling as HTMLElement;
+                                  if (fallback) {
+                                    fallback.style.display = 'none';
+                                  }
+                                }}
+                                onError={(e) => {
+                                  const target = e.currentTarget as HTMLImageElement;
+                                  if (target.src.includes('flagsapi.com')) {
+                                    target.src = `https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/${getCountryCode(team.country)}.svg`;
+                                  } else if (target.src.includes('jsdelivr')) {
+                                    target.src = `https://flagcdn.com/w80/${getCountryCode(team.country)}.png`;
+                                  } else {
+                                    target.style.display = 'none';
+                                    const fallback = target.nextElementSibling as HTMLElement;
+                                    if (fallback) {
+                                      fallback.style.display = 'flex';
+                                    }
+                                  }
+                                }}
+                              />
+                              <div 
+                                className="absolute inset-0 flex items-center justify-center text-4xl bg-gradient-to-br from-gray-600 to-gray-700 rounded-md border-2 border-white border-opacity-30"
+                                style={{ display: 'none' }}
+                              >
+                                {team.flag}
+                              </div>
+                            </div>
+                          </div>
                           <h3 className="text-xl font-bold mb-2">{team.name}</h3>
                           <p className="text-gray-400 mb-4">{team.country}</p>
                           
@@ -169,7 +242,35 @@ export default function Teams({ userCards, onTeamSelect }: TeamsProps) {
                       selectedTeam === team.id ? 'bg-blue-800 bg-opacity-50' : ''
                     }`}
                   >
-                    <div className="col-span-1 text-center text-2xl">{team.flag}</div>
+                    <div className="col-span-1 text-center">
+                      <div className="flex justify-center">
+                        <div className="relative w-8 h-6">
+                          <img
+                            src={`https://flagsapi.com/${getCountryCode(team.country).toUpperCase()}/flat/64.png`}
+                            alt={`Bandeira ${team.country}`}
+                            className="w-full h-full object-cover rounded border border-white border-opacity-20"
+                            onError={(e) => {
+                              const target = e.currentTarget as HTMLImageElement;
+                              if (target.src.includes('flagsapi.com')) {
+                                target.src = `https://flagcdn.com/w40/${getCountryCode(team.country)}.png`;
+                              } else {
+                                target.style.display = 'none';
+                                const fallback = target.nextElementSibling as HTMLElement;
+                                if (fallback) {
+                                  fallback.style.display = 'block';
+                                }
+                              }
+                            }}
+                          />
+                          <span 
+                            className="text-lg hidden"
+                            style={{ display: 'none' }}
+                          >
+                            {team.flag}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                     <div className="col-span-3 font-semibold">{team.name}</div>
                     <div className="col-span-2 text-gray-400">{team.country}</div>
                     <div className="col-span-2 text-gray-400">{team.formation}</div>
